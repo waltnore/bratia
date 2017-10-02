@@ -1,0 +1,178 @@
+
+
+        <div class="logo">
+            <div class="logo-normal">
+                <a href="#" class="simple-text">
+                    BRATIA SOFT
+                </a>
+            </div>
+
+            <div class="logo-img">
+                <img src="/assets/img/angular2-logo-white.png"/>
+            </div>
+        </div>
+
+
+        <div class="sidebar-wrapper">
+
+            <div *ngIf="isNotMobileMenu()">
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group form-search is-empty">
+                        <input class="form-control" placeholder="Buscar..." type="text">
+                        <span class="material-input"></span>
+                        <span class="material-input"></span>
+                    </div>
+                    <button class="btn btn-white btn-round btn-just-icon" type="submit">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </form>
+                <ul class="nav nav-mobile-menu">
+                   
+                   
+                    <li class="">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <i class="material-icons">person</i>
+                            <p class="hidden-lg hidden-md">Profile</p>
+                        <div class="ripple-container"></div></a>
+                    </li>
+                    <li class="separator hidden-lg hidden-md"></li>
+                </ul>
+            </div>
+            <div class="nav-container">
+                <ul class="nav">
+                    <li routerLinkActive="active">
+                        <a  [routerLink]="[menuItems[0].path]">
+                            <i class="{{menuItems[0].icon}}">dashboard</i>
+                            <p>{{menuItems[0].title}}</p>
+                        </a>
+                    </li>
+
+
+                    <li routerLinkActive="active">
+                            <a data-toggle="collapse" href="#proyectosExamples">
+                                <i class="material-icons">apps</i>
+                                <p>Proyectos
+                                    <b class="caret"></b>
+                                </p>
+                            </a>
+                            <div class="collapse" id="proyectosExamples">
+                                <ul class="nav">
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[3].path]">
+                                            <span class="sidebar-mini">P</span>
+                                            <span class="sidebar-normal">Proyectos</span>
+                                        </a>
+                                    </li>
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[4].path]">
+    
+                                            <span class="sidebar-mini">PR</span>
+                                            <span class="sidebar-normal">Presupuestos</span>
+                                        </a>
+                                    </li>
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[5].path]">
+    
+                                            <span class="sidebar-mini">RE</span>
+                                            <span class="sidebar-normal">Requisiciones</span>
+                                        </a>
+                                    </li>
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[6].path]">
+    
+                                            <span class="sidebar-mini">OC</span>
+                                            <span class="sidebar-normal">Orden de Compra</span>
+                                        </a>
+                                    </li>
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[7].path]">
+    
+                                            <span class="sidebar-mini">OP</span>
+                                            <span class="sidebar-normal">Oreden de Pago</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[7].path]">
+    
+                                            <span class="sidebar-mini">RB</span>
+                                            <span class="sidebar-normal">Reembolsos</span>
+                                        </a>
+                                    </li>
+
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[7].path]">
+    
+                                            <span class="sidebar-mini">AV</span>
+                                            <span class="sidebar-normal">Avance de Obra</span>
+                                        </a>
+                                    </li>
+
+                                    <li routerLinkActive="active">
+                                        <a  [routerLink]="[menuItems[7].path]">
+    
+                                            <span class="sidebar-mini">BA</span>
+                                            <span class="sidebar-normal">Balance General</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                    </li>
+
+                    <li routerLinkActive="active">
+                        <a data-toggle="collapse" href="#proveedoresExamples">
+                            <i class="material-icons">account_box</i>
+                            <p>Proveedores
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="proveedoresExamples">
+                            <ul class="nav">
+                                <li routerLinkActive="active">
+                                    <a  [routerLink]="[menuItems[8].path]">
+                                        <span class="sidebar-mini">PV</span>
+                                        <span class="sidebar-normal">Proveedores</span>
+                                    </a>
+                                </li>
+                                <li routerLinkActive="active">
+                                    <a  [routerLink]="[menuItems[9].path]">
+
+                                        <span class="sidebar-mini">CT</span>
+                                        <span class="sidebar-normal">Cotizaciones</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li routerLinkActive="active">
+                        <a data-toggle="collapse" href="#itemsExamples">
+                            <i class="material-icons">description</i>
+                            <p>Items
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="itemsExamples">
+                            <ul class="nav">
+                                <li routerLinkActive="active">
+                                    <a  [routerLink]="[menuItems[10].path]">
+                                        <span class="sidebar-mini">IT</span>
+                                        <span class="sidebar-normal">Item</span>
+                                    </a>
+                                </li>
+                                <li routerLinkActive="active">
+                                    <a  [routerLink]="[menuItems[11].path]">
+
+                                        <span class="sidebar-mini">GR</span>
+                                        <span class="sidebar-normal">Grupos</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                </li>
+
+                </ul>
+            </div>
+
+        </div>

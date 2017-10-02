@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header card-header-icon" data-background-color="rose">
+                                <i class="material-icons">perm_identity</i>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Item  -
+                                    <small class="category">Creacion de Items</small>
+                                </h4>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Nombre del Item</label>
+                                                <input type="text" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Referencia</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                        <label class="control-label">Unidad</label>
+                                                        <select name="unidad" class="form-control">
+                                                            <option disabled="" selected=""></option>
+                                                            <option value="1">UND </option>
+                                                            <option value="2"> ML </option>
+                                                        </select>
+                                                     </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Linea</label>
+                                                <select name="linea" class="form-control">
+                                                    <option disabled="" selected=""></option>
+                                                    <option value="1"> Mano de Obra </option>
+                                                    <option value="2"> Materiales </option>
+                                                </select>
+                                             </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                                <div class="form-group label-floating">
+                                                    <div class="togglebutton">
+                                                        <label>
+                                                            <input type="checkbox" checked> Activo
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                  
+                                 
+                                    <button type="submit" class="btn btn-rose pull-right" (click)=setItem()>Crear Item</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</div>
