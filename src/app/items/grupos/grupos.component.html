@@ -46,9 +46,42 @@
                                             </div>
                                         </div>
                                       
-                                     
-                                        <button type="submit" class="btn btn-rose pull-right" (click)=setItem()>Crear Grupo</button>
-                                        <div class="clearfix"></div>
+                                        <div class="row" *ngIf="newgrupo">
+                                            <div class="col-md-2">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Item</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Cantidad</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Cotizacion</label>
+                                                    <select name="Unidad" class="form-control">
+                                                        <option disabled="" selected=""></option>
+                                                        <option value="1">Cotizacion 1 </option>
+                                                        <option value="2"> Cotizacion 2 </option>
+                                                    </select>
+                                                 </div>
+                                            </div>
+                                            <div *ngIf="newgrupo" >
+                                                 <div class="form-group label-floating">
+                                                    <button type="submit" class="btn btn-rose pull-left  btn-sm" (click)=CreadoGrupo()>Agregar Item</button>
+                                                 </div>  
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                         <div *ngIf="!newgrupo">
+                                            <button type="submit" class="btn btn-rose pull-right" (click)=CreadoGrupo()>Crear Grupo</button>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        
                                     </form>
                                 </div>
                             </div>
@@ -56,4 +89,39 @@
             </div>
         </div>
     </div>
+
+    <div class="table-responsive">
+            <table class="table">
+                    <thead>
+                        <tr>
+                          <th class="text-center">{{ tableData1.headerRow[0] }}</th>
+                          <th>{{ tableData1.headerRow[1] }}</th>
+                          <th>{{ tableData1.headerRow[2] }}</th>
+                          <th>{{ tableData1.headerRow[3] }}</th>
+                          <th class="text-right">{{ tableData1.headerRow[4] }}}</th>
+                          <th class="text-right">{{ tableData1.headerRow[5] }}</th>
+                        </tr>
+                    </thead>
+                  <tbody>
+                      <tr *ngFor="let row of tableData1.dataRows">
+                          <td class="text-center">{{row[0]}}</td>
+                          <td>{{row[1]}}</td>
+                          <td>{{row[2]}}</td>
+                          <td>{{row[3]}}</td>
+                          <td class="text-right">&euro; {{row[4]}}</td>
+                          <td class="td-actions text-right">
+                              <button type="button" rel="tooltip" class="btn btn-info {{row[5]}}">
+                                  <i class="material-icons">person</i>
+                              </button>
+                              <button type="button" rel="tooltip" class="btn btn-success {{row[5]}}">
+                                  <i class="material-icons">edit</i>
+                              </button>
+                              <button type="button" rel="tooltip" class="btn btn-danger {{row[5]}}">
+                                  <i class="material-icons">close</i>
+                              </button>
+                          </td>
+                      </tr>
+                  </tbody>
+            </table>
+        </div>
     
