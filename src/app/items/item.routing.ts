@@ -3,6 +3,7 @@ import { GruposComponent } from "../items/grupos/grupos.component";
 import { ItemComponent } from "../items/item/item.component";
 
 
+
 export const ComponentsRoutes: Routes = [
     {
       path: '',
