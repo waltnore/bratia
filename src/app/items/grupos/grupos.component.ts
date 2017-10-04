@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class GruposComponent   {
 
   newgrupo:boolean;
+  ref:String = "Grupo";
+  nombre:String = "Creacion Grupo";
  
 
 tableData1 =  [
@@ -21,6 +23,8 @@ tableData1 =  [
 
   CreadoGrupo(){
     this.newgrupo=true;
+    this.ref="G1ParDem"
+    this.nombre= "Demolicion de pared";
     console.log("dio clic");
   }
 

@@ -1,18 +1,18 @@
 <div class="main-content">
         <div class="container-fluid">
             <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-icon" data-background-color="rose">
                                     <i class="material-icons">perm_identity</i>
                                 </div>
                                 <div class="card-content">
-                                    <h4 class="card-title">Grupos  -
-                                        <small class="category">Creacion de Grupos</small>
+                                    <h4 class="card-title">{{ref}}  -
+                                        <small class="category">{{nombre}}</small>
                                     </h4>
                                     <form >
                                        
-                                        <div class="row">
+                                        <div *ngIf="!newgrupo" class="row">
                                             <div class="col-md-2">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Referencia</label>
@@ -44,9 +44,15 @@
                                                         </div>
                                                     </div>
                                             </div>
+                                            <div >
+                                                <button type="submit" class="btn btn-rose pull-right" (click)=CreadoGrupo()>Crear Grupo</button>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                       
                                         </div>
+
                                       
-                                        <div class="row" *ngIf="newgrupo">
+                                         <div class="row" *ngIf="newgrupo">
                                             <div class="col-md-2">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Item</label>
@@ -104,10 +110,7 @@
                                             </div>
                                             
                                         </div>
-                                         <div *ngIf="!newgrupo">
-                                            <button type="submit" class="btn btn-rose pull-right" (click)=CreadoGrupo()>Crear Grupo</button>
-                                            <div class="clearfix"></div>
-                                        </div>
+                                       
                                         
                                     </form>
                                 </div>
