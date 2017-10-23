@@ -7,6 +7,9 @@ import { ProveedorComponent } from "./proveedor/proveedor.component";
 import { CotizacionComponent } from "./cotizacion/cotizacion.component";
 import { ComponentsRoutes } from './proveedores.routing';
 
+import { ItemService } from 'app/services/item.service';
+import { CotizacionService } from 'app/services/cotizacion.service';
+
 
 @NgModule({
   imports: [
@@ -17,6 +20,10 @@ import { ComponentsRoutes } from './proveedores.routing';
   declarations: [
     ProveedorComponent,
     CotizacionComponent
+  ],
+  providers:[
+    ItemService,
+    CotizacionService
   ]
 })
 

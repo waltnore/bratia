@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ItemService } from 'app/services/item.service';
 
 
 @Component({
@@ -6,11 +7,24 @@ import { Component } from '@angular/core';
   templateUrl: './item.component.html'
 })
 export class ItemComponent   {
-  
 
-  public setItem(){
+  items:any[];
+
+  constructor(private itemservices:ItemService){
+    this.items=this.itemservices.getItems();
+   
+  }
+
+  public setItem(ref:string, nombre:string){
     
-      console.log("dio click")
+      this.itemservices.additem(ref,nombre);
+      this.items=this.itemservices.getItems();
+      
+    }
+
+    public delItem(ref:string){
+      this.itemservices.delItem(Number(ref));
+      this.items=this.itemservices.getItems();
     }
 }
 

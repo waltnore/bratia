@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemComponent } from './item/item.component';
 import { GruposComponent } from './grupos/grupos.component';
 import { ComponentsRoutes } from './item.routing';
+import { ItemService } from 'app/services/item.service';
+import { GruposService } from 'app/services/grupos.service';
 
 
 @NgModule({
@@ -17,6 +19,10 @@ import { ComponentsRoutes } from './item.routing';
   declarations: [
     ItemComponent,
       GruposComponent
+  ],
+  providers:[
+    ItemService,
+    GruposService
   ]
 })
 

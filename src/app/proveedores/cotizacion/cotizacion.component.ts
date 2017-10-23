@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ItemService } from 'app/services/item.service';
+import { CotizacionService } from 'app/services/cotizacion.service';
 
 
 @Component({
@@ -10,32 +12,42 @@ export class CotizacionComponent   {
   
   newgrupo:boolean;
   ref:String = "Cotizacion";
-  nombre:String = "Creacion de Cotizacion";
- 
+  nombre:String = "Creacion de Cotizaciones";
+  items :any[];
+  grupos :any[];
+  gruposItems :any[];
 
-tableData1 =  [
-        ['1', 'Andrew Mike', 'Develop', '2013', '99,225',''],
-        ['2', 'John Doe', 'Design', '2012', '89,241', 'btn-round'],
-        ['3', 'Alex Mike', 'Design', '2010', '92,144', 'btn-simple'],
-        ['4','Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-        ['5', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
-        ['6', 'Paul Dickens', 'Communication', '2015', '69,201', '']
-    ];
+  constructor(private itemService:ItemService, private cotiService:CotizacionService){
+    this.items=itemService.getItems();
+    this.grupos=cotiService.getGrupos();
+    this.gruposItems=cotiService.getItems();
+  
+  }
 
-  CreadoGrupo(){
+  CreadoGrupo(ref2:string, nombre:string, prov:string){
     this.newgrupo=true;
-    this.ref="C1Meg1"
-    this.nombre= "Cotizacion Preveedor Mega";
-    console.log("dio clic");
+    this.ref=ref2;
+    this.nombre= nombre;
+    this.cotiService.addGrupos(ref2,nombre,prov);
+    this.grupos = this.cotiService.getGrupos();
+
   }
 
-  addItem(){
-    this.tableData1.push( ['7', 'Walter', 'Prueba', '2017', '99,225','']);
+  borrarGrupo(ref:string){
+    this.cotiService.borraGrupos(Number(ref));
+    this.grupos=this.cotiService.getGrupos();
+    
   }
 
-  borrarItem(){
+  addItem(grupo:string,ref:string,cant:string){
+    this.cotiService.additem(grupo,ref,cant)
+    this.gruposItems=this.cotiService.getItems();
+  }
 
-    this.tableData1.splice(1, 1);
+  borrarItem(ref:string){
+    this.cotiService.delItem(Number(ref));
+    this.gruposItems=this.cotiService.getItems();
     
   }
 }
+

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ItemService } from 'app/services/item.service';
+import { GruposService } from 'app/services/grupos.service';
 
 
 @Component({
@@ -7,35 +9,45 @@ import { Component } from '@angular/core';
 })
 export class GruposComponent   {
 
+
   newgrupo:boolean;
   ref:String = "Grupo";
   nombre:String = "Creacion Grupo";
- 
+  items :any[];
+  grupos :any[];
+  gruposItems :any[];
 
-tableData1 =  [
-        ['1', 'Andrew Mike', 'Develop', '2013', '99,225',''],
-        ['2', 'John Doe', 'Design', '2012', '89,241', 'btn-round'],
-        ['3', 'Alex Mike', 'Design', '2010', '92,144', 'btn-simple'],
-        ['4','Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-        ['5', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
-        ['6', 'Paul Dickens', 'Communication', '2015', '69,201', '']
-    ];
+  constructor(private itemService:ItemService, private gruposService:GruposService){
+    this.items=itemService.getItems();
+    this.grupos=gruposService.getGrupos();
+    this.gruposItems=gruposService.getItems();
+  
+  }
 
-  CreadoGrupo(){
+  CreadoGrupo(ref2:string, nombre:string){
     this.newgrupo=true;
-    this.ref="G1ParDem"
-    this.nombre= "Demolicion de pared";
-    console.log("dio clic");
+    this.ref=ref2;
+    this.nombre= nombre;
+    this.gruposService.addGrupos(ref2,nombre);
+    this.grupos = this.gruposService.getGrupos();
+
   }
 
-  addItem(){
-    this.tableData1.push( ['7', 'Walter', 'Prueba', '2017', '99,225','']);
-  }
-
-  borrarItem(){
-
-    this.tableData1.splice(1, 1);
+  borrarGrupo(ref:string){
+    this.gruposService.borraGrupos(Number(ref));
+    this.grupos=this.gruposService.getGrupos();
     
   }
-  
+
+  addItem(grupo:string,ref:string, nombre:string, cant:string){
+    this.gruposService.additem(grupo,ref,nombre,cant)
+    this.gruposItems=this.gruposService.getItems();
+  }
+
+  borrarItem(ref:string){
+    this.gruposService.delItem(Number(ref));
+    this.gruposItems=this.gruposService.getItems();
+    
+  }
 }
+

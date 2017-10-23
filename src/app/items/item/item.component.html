@@ -15,7 +15,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre del Item</label>
-                                                <input type="text" class="form-control" >
+                                                <input type="text" class="form-control" #nombre >
                                             </div>
                                         </div>
                                     </div>
@@ -23,7 +23,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Referencia</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" #ref>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -58,12 +58,47 @@
                                     </div>
                                   
                                  
-                                    <button type="submit" class="btn btn-rose pull-right" (click)=setItem()>Crear Item</button>
+                                    <button  class="btn btn-rose pull-right" (click)=setItem(ref.value,nombre.value)>Crear Item</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
                         </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="card-title">Items</h4>
+                        <p class="category">Ultimos Creados</p>
                     </div>
+                    <div class="card-content">
+                            <div class="table-responsive">
+                                    <table class="table">
+                                           
+                                          <tbody>
+                                              <tr *ngFor="let row of items ; let i = index" [attr.data-index]="i">
+                                                  <td class="text-center">{{row[0]}}</td>
+                                                  <td>{{row[1]}}</td>
+                                                  <td>{{row[2]}}</td>
+                                                  <td>{{row[3]}}</td>
+                                                  
+                                                  <td class="td-actions text-right">
+                                                    
+                                                      <button type="button" rel="tooltip" class="btn  btn-simple" (click)="borrarItem()">
+                                                          <i class="material-icons">edit</i>
+                                                      </button>
+                                                      <button type="button" rel="tooltip" class="btn btn-danger btn-simple" (click)="delItem(i)">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                    </table>
+                                </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

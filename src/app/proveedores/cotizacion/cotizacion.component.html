@@ -1,119 +1,157 @@
-<div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-                <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header card-header-icon" data-background-color="green">
-                                <i class="material-icons">perm_identity</i>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="card-title">{{ref}}  -
-                                    <small class="category">{{nombre}}</small>
-                                </h4>
-                                <form >
-                                   
-                                    <div *ngIf="!newgrupo" class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Referencia</label>
-                                                <input name="ref" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Nombre Cotizacion</label>
-                                                    <input name="nombre" type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Proveedor</label>
-                                                <select name="Unidad" class="form-control">
-                                                    <option disabled="" selected=""></option>
-                                                    <option value="1">Proveedor 1 </option>
-                                                    <option value="2">Proveedor 2 </option>
-                                                </select>
-                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                                <div class="form-group label-floating">
-                                                    <div class="togglebutton">
-                                                        <label>
-                                                            <input type="checkbox" checked> Activo
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div >
-                                            <button type="submit" class="btn btn-rose pull-right" (click)=CreadoGrupo()>Crear Cotizacion</button>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                   
-                                    </div>
 
-                                  
-                                     <div class="row" *ngIf="newgrupo">
-                                        <div class="col-md-2">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Item</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Cantidad</label>
-                                                    <input type="text" class="form-control">
+    <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-md-10">
+                                <div class="card">
+                                    <div class="card-header card-header-icon" data-background-color="rose">
+                                        <i class="material-icons">perm_identity</i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h4 class="card-title">{{ref}}  -
+                                            <small class="category">{{nombre}}</small>
+                                        </h4>
+                                        <form >
+                                         <div *ngIf="!newgrupo">
+                                            <div class="row">
+                                                    <div class="col-md-2">
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">Referencia</label>
+                                                                <input name="ref" type="text" class="form-control" #ref2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                                <div class="form-group label-floating">
+                                                                    <label class="control-label">Nombre Cotizacion</label>
+                                                                    <input name="nombre" type="text" class="form-control" #nombre2>
+                                                                </div>
+                                                            </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label">Proveedor</label>
+                                                                <select name="Unidad" class="form-control" #prov>
+                                                                    <option disabled="" selected=""></option>
+                                                                    <option value="Proveedor 1">Proveedor 1 </option>
+                                                                    <option value="Proveedor 2">Proveedor 2 </option>
+                                                                </select>
+                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                                <div class="form-group label-floating">
+                                                                    <div class="togglebutton">
+                                                                        <label>
+                                                                            <input type="checkbox" checked> Activo
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                <div >
+                                                    <button  class="btn btn-rose pull-right" (click)=CreadoGrupo(ref2.value,nombre2.value,prov.value)>Crear Grupo</button>
+                                                    <div class="clearfix"></div>
                                                 </div>
+                                           
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Valor</label>
-                                                    <input type="text" class="form-control">
+                                         </div>
+    
+                                            <div *ngIf="newgrupo">
+                                                <div class="row">
+                                                    <div class="col-md-5">                                                   
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Item</label>
+                                                            <select name="item" class="form-control" #item>
+                                                                <option disabled="" selected=""></option>   
+                                                                <option   *ngFor="let row of items" value='{{row[2]}}'>{{row[2]}} </option>
+                                                                
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Valor</label>
+                                                            <input type="text" class="form-control" #cant>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                
+                                                     <div class="form-group label-floating">
+                                                        <button type="submit" class="btn btn-rose pull-left  btn-sm" (click)=addItem(ref,item.value,cant.value)>Agregar Item</button>
+                                                     </div>  
                                                 </div>
-                                            </div>
-                                        <div *ngIf="newgrupo" >
-                                             <div class="form-group label-floating">
-                                                <button type="submit" class="btn btn-rose pull-left  btn-sm" (click)=addItem()>Agregar Item</button>
-                                             </div>  
-                                            
-                                             <div class="card" class="col-md-6">
-                                               
-                                                <div class="card-content">
-                                                   
-                                                    <div class="table-responsive">
-                                                        <table class="table">
+                                                    
+                                                <div class="row">
+                                                        <div class="col-md-10">
+                                                            <div class="card">
                                                                
-                                                              <tbody>
-                                                                  <tr *ngFor="let row of tableData1">
-                                                                      <td class="text-center">{{row[0]}}</td>
-                                                                      <td>{{row[1]}}</td>
-                                                                      <td>{{row[2]}}</td>
-                                                                      <td>{{row[3]}}</td>
-                                                                      
-                                                                      <td class="td-actions text-right">
-                                                                        
-                                                                          <button type="button" rel="tooltip" class="btn btn-danger btn-simple" (click)="borrarItem()">
-                                                                              <i class="material-icons">close</i>
-                                                                          </button>
-                                                                      </td>
-                                                                  </tr>
-                                                              </tbody>
-                                                        </table>
+                                                                <div class="card-content">
+                                                                        <div class="table-responsive">
+                                                                                <table class="table">
+                                                                                       
+                                                                                      <tbody>
+                                                                                          <tr *ngFor="let row of gruposItems ; let i = index" [attr.data-index]="i">
+                                                                                              <td class="text-center">{{row[0]}}</td>
+                                                                                              <td>{{row[1]}}</td>
+                                                                                              <td>{{row[2]}}</td>
+                                                                                              <td>{{row[3]}}</td>
+                                                                                              
+                                                                                              <td class="td-actions text-right">
+                                                                                                
+                                                                                                  
+                                                                                                  <button type="button" rel="tooltip" class="btn btn-danger btn-simple" (click)="borrarItem(i)">
+                                                                                                        <i class="material-icons">close</i>
+                                                                                                    </button>
+                                                                                              </td>
+                                                                                          </tr>
+                                                                                      </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
+    
+                                            </div>                   
                                         
+                                        </form>
                                     </div>
-                                   
-                                    
-                                </form>
+                                </div>
+                            </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-header" data-background-color="purple">
+                                    <h4 class="card-title">Cotizaciones</h4>
+                                    <p class="category">Ultimas Creadas</p>
+                                </div>
+                                <div class="card-content">
+                                        <div class="table-responsive">
+                                                <table class="table">
+                                                       
+                                                      <tbody>
+                                                          <tr *ngFor="let row of grupos ; let i = index" [attr.data-index]="i">
+                                                              <td class="text-center">{{row[0]}}</td>
+                                                              <td>{{row[1]}}</td>
+                                                              <td>{{row[2]}}</td>
+                                                              <td>{{row[3]}}</td>
+                                                              
+                                                              <td class="td-actions text-right">
+                                                                
+                                                                  <button type="button" rel="tooltip" class="btn  btn-simple" (click)="editGrupo(row[0])">
+                                                                      <i class="material-icons">edit</i>
+                                                                  </button>
+                                                                  <button type="button" rel="tooltip" class="btn btn-danger btn-simple" (click)="borrarGrupo(i)">
+                                                                        <i class="material-icons">close</i>
+                                                                    </button>
+                                                              </td>
+                                                          </tr>
+                                                      </tbody>
+                                                </table>
+                                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-        </div>
-    </div>
-</div>
-
-
+                </div>
+            </div>
+       
+        
