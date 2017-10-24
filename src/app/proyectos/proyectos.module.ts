@@ -10,6 +10,7 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
 import { RequisicionesComponent } from './requisiciones/requisiciones.component';
 
 import { ComponentsRoutes } from './proyectos.routing';
+import { ProyectoService } from 'app/services/proyecto.service';
 
 
 @NgModule({
@@ -24,6 +25,9 @@ import { ComponentsRoutes } from './proyectos.routing';
     PresupuestoComponent,
     ProyectoComponent,
     RequisicionesComponent
+  ],
+  providers:[
+    ProyectoService
   ]
 })
 

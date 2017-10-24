@@ -20,15 +20,15 @@ export class ItemService {
     additem(ref:string, nombre:string){
       this.count = this.count + 1;
       this.items.push([this.count.toString(),ref,nombre]);
-      localStorage.setItem('my_items', JSON.stringify(this.items))
-      console.log(ref)
+      localStorage.setItem('my_items', JSON.stringify(this.items));
+      console.log(ref);
     }
 
     delItem(ref:number){
      
         this.items.splice(ref, 1);
-        localStorage.setItem('my_items', JSON.stringify(this.items))
-        console.log(ref)
+        localStorage.setItem('my_items', JSON.stringify(this.items));
+        console.log(ref);
      
     }
 }
