@@ -9,8 +9,9 @@ export class ItemService {
   ];
 
   constructor() {
-    
-    this.items=JSON.parse(localStorage.getItem('my_items'));
+    if(localStorage.getItem('my_items')){
+      this.items=JSON.parse(localStorage.getItem('my_items'));
+    }
    }
 
     getItems(){

@@ -11,6 +11,8 @@ import { RequisicionesComponent } from './requisiciones/requisiciones.component'
 
 import { ComponentsRoutes } from './proyectos.routing';
 import { ProyectoService } from 'app/services/proyecto.service';
+import { PresupuestoService } from 'app/services/presupuesto.service';
+import { GruposService } from 'app/services/grupos.service';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ProyectoService } from 'app/services/proyecto.service';
     RequisicionesComponent
   ],
   providers:[
-    ProyectoService
+    ProyectoService,
+    PresupuestoService,
+    GruposService
   ]
 })
 

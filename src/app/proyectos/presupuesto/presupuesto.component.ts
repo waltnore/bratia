@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { GruposService } from 'app/services/grupos.service';
+import { PresupuestoService } from 'app/services/presupuesto.service';
+import { ProyectoService } from 'app/services/proyecto.service';
 
 
 @Component({
@@ -8,36 +11,46 @@ import { Component } from '@angular/core';
 export class PresupuestoComponent   {
   
 
-
   newgrupo:boolean;
   ref:String = "Presupuesto";
-  nombre:String = "Creacion de Presupuesto";
- 
+  nombre:String = "Creacion de Presupuestos";
+  presu :any[];
+  presoGrupos :any[];
+  proy: any[];
+  grupos: any[];
 
-tableData1 =  [
-        ['1', 'Andrew Mike', 'Develop', '2013', '99,225',''],
-        ['2', 'John Doe', 'Design', '2012', '89,241', 'btn-round'],
-        ['3', 'Alex Mike', 'Design', '2010', '92,144', 'btn-simple'],
-        ['4','Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-        ['5', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
-        ['6', 'Paul Dickens', 'Communication', '2015', '69,201', '']
-    ];
+  constructor(private presuService:PresupuestoService, private gruposService:GruposService, private proyectoService:ProyectoService){
+    this.presu=presuService.getPresu();
+    this.presoGrupos=presuService.getItems();
+    this.proy = proyectoService.getItems();
+    this.grupos = gruposService.getGrupos();
+  
+  }
 
-  CreadoGrupo(){
+  CreadoGrupo(ref2:string, nombre:string){
     this.newgrupo=true;
-    this.ref="Pr1Pro"
-    this.nombre= "Presupuesto para el Proyecto 1";
-    console.log("dio clic");
+    this.ref=ref2;
+    this.nombre= nombre;
+    this.presuService.addPresu(ref2,nombre);
+    this.presu = this.presuService.getPresu();
+
   }
 
-  addItem(){
-    this.tableData1.push( ['7', 'Walter', 'Prueba', '2017', '99,225','']);
-  }
-
-  borrarItem(){
-
-    this.tableData1.splice(1, 1);
+  borrarGrupo(ref:string){
+    this.presuService.borraPresu(Number(ref));
+    this.presu=this.presuService.getPresu();
     
   }
 
+  addItem(ref:string,grupo:string, cant:string){
+    this.presuService.additem(grupo,ref,cant)
+    this.presoGrupos=this.presuService.getItems();
+  }
+
+  borrarItem(ref:string){
+    this.presuService.delItem(Number(ref));
+    this.presoGrupos=this.presuService.getItems();
+    
+  }
+  
 }
